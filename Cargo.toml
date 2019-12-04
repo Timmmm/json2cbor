@@ -3,6 +3,9 @@ name = "json2cbor"
 version = "1.0.0"
 authors = ["Tim Hutt <tdhutt@gmail.com>"]
 edition = "2018"
+description = "Convert JSON to CBOR"
+license = "0BSD"
+repository = "https://github.com/Timmmm/json2cbor"
 
 [dependencies]
 serde = "1.0.102"
