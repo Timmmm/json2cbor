@@ -4,7 +4,7 @@ use anyhow::Result;
 fn main() -> Result<()> {
     let args = std::env::args().collect::<Vec<_>>();
     if args.len() != 3 {
-        eprintln!("Usage: ./json2cbor <input.json> <output.cbor>");
+        eprintln!("Usage: json2cbor <input.json> <output.cbor>");
         return Ok(())
     }
 
