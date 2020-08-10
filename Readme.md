@@ -1,6 +1,6 @@
 # JSON2CBOR
 
-This is a really (really) simple program for converting JSON to CBOR. It does the transformation using [`serde-transcode`](https://github.com/sfackler/serde-transcode).
+This repo contains two really simple programs to convert JSON to CBOR and vice versa. It does the transformation using [`serde-transcode`](https://github.com/sfackler/serde-transcode).
 
 ## Install
 
@@ -9,6 +9,7 @@ This is a really (really) simple program for converting JSON to CBOR. It does th
 
 ## Use
 
-    json2cbor in.json out.json
+    json2cbor in.json out.cbor
+    cbor2json in.cbor out.json
 
 That's it!

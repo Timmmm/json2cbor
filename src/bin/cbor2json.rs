@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::io::{BufReader, BufWriter};
 use anyhow::Result;
+
 fn main() -> Result<()> {
     let args = std::env::args().collect::<Vec<_>>();
     if args.len() != 3 {
