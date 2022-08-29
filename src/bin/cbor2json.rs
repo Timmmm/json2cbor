@@ -10,6 +10,14 @@ struct Args {
     #[clap(short, long)]
     input: Option<String>,
 
+    /// Input file to read from. Reads from stdin if not present.
+    #[clap(value_parser, id="INPUT", conflicts_with="input")]
+    input_positional: Option<String>,
+
+    /// Output file to read from. Reads from stdout if not present.
+    #[clap(value_parser, id="OUTPUT", conflicts_with="output")]
+    output_positional: Option<String>,
+
     /// Output file to write to. Writes to stdout if not present.
     #[clap(short, long)]
     output: Option<String>,
@@ -19,13 +27,13 @@ fn main() -> Result<()> {
     let args = Args::parse();
 
     let fin: Box<dyn std::io::Read> =
-        match args.input {
+        match args.input.or(args.input_positional) {
             None => Box::new(std::io::stdin()),
             Some(file_name) => Box::new(File::open(file_name)?),
         };
 
     let fout: Box<dyn std::io::Write> =
-        match args.output {
+        match args.output.or(args.output_positional) {
             None => Box::new(std::io::stdout()),
             Some(file_name) => Box::new(File::create(file_name)?),
         };
