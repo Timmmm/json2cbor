@@ -1,6 +1,6 @@
 [package]
 name = "json2cbor"
-version = "1.0.0"
+version = "2.0.0"
 authors = ["Tim Hutt <tdhutt@gmail.com>"]
 edition = "2018"
 description = "Convert JSON to CBOR"
