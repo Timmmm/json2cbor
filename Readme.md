@@ -9,7 +9,35 @@ This repo contains two really simple programs to convert JSON to CBOR and vice v
 
 ## Use
 
-    json2cbor in.json out.cbor
-    cbor2json in.cbor out.json
+`json2cbor` and `cbor2json` both take the same flags & arguments
 
-That's it!
+### Reads/writes to stdin/stdout by default
+
+```sh
+echo '{"foo":"bar"}' | json2cbor | cbor2json
+# Output: {"foo":"bar"}
+```
+
+### Read from an input file
+
+```sh
+json2cbor -i in.json
+```
+
+### Write to an output file
+
+```sh
+json2cbor -o out.cbor
+```
+
+### Read & write at the same time
+
+```sh
+json2cbor -i in.json -o out.cbor
+```
+
+### Get help
+
+```sh
+json2cbor --help
+```
