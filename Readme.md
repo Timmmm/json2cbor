@@ -21,19 +21,19 @@ echo '{"foo":"bar"}' | json2cbor | cbor2json
 ### Read from an input file
 
 ```sh
-json2cbor -i in.json
+json2cbor in.json
 ```
 
 ### Write to an output file
 
 ```sh
-json2cbor -o out.cbor
+echo '{"foo":"bar"}' | json2cbor -o out.cbor
 ```
 
-### Read & write at the same time
+### Read & write to files
 
 ```sh
-json2cbor -i in.json -o out.cbor
+json2cbor -o out.cbor in.json
 ```
 
 ### Get help
