@@ -7,19 +7,11 @@ use clap::Parser;
 #[clap(author, version, about, long_about=None)]
 struct Args {
     /// Input file to read from. Reads from stdin if not present.
-    #[clap(short, long)]
+    #[clap(value_parser, id="INPUT_FILE")]
     input: Option<String>,
 
-    /// Input file to read from. Reads from stdin if not present.
-    #[clap(value_parser, id="INPUT", conflicts_with="input")]
-    input_positional: Option<String>,
-
-    /// Output file to read from. Reads from stdout if not present.
-    #[clap(value_parser, id="OUTPUT", conflicts_with="output")]
-    output_positional: Option<String>,
-
     /// Output file to write to. Writes to stdout if not present.
-    #[clap(short, long)]
+    #[clap(short, long, id="OUTPUT_FILE")]
     output: Option<String>,
 }
 
@@ -27,13 +19,13 @@ fn main() -> Result<()> {
     let args = Args::parse();
 
     let fin: Box<dyn std::io::Read> =
-        match args.input.or(args.input_positional) {
+        match args.input {
             None => Box::new(std::io::stdin()),
             Some(file_name) => Box::new(File::open(file_name)?),
         };
 
     let fout: Box<dyn std::io::Write> =
-        match args.output.or(args.output_positional) {
+        match args.output {
             None => Box::new(std::io::stdout()),
             Some(file_name) => Box::new(File::create(file_name)?),
         };
